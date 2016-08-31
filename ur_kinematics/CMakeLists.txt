@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(ur_kinematics)
 
+set(CMAKE_CXX_FLAGS "-std=c++11")
+
 find_package(catkin REQUIRED COMPONENTS roscpp geometry_msgs moveit_core
   moveit_ros_planning pluginlib tf_conversions)
 
@@ -54,6 +56,10 @@ target_link_libraries(ur10_moveit_plugin
   ur10_kin)
 
 
+add_executable(kinematics_demo src/kinematics_demo.cpp)
+target_link_libraries(kinematics_demo  
+  ${catkin_LIBRARIES}
+  ${Boost_LIBRARIES})
 #############
 ## Install ##
 #############
